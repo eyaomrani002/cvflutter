@@ -4,7 +4,7 @@ import 'package:ayaomrani/TabBar/competences.dart';
 import 'package:ayaomrani/TabBar/experience.dart';
 import 'package:ayaomrani/TabBar/portfolio.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class MyTabBar extends StatefulWidget {
   const MyTabBar({Key? key});
 
@@ -44,6 +44,10 @@ class _MyTabBarState extends State<MyTabBar> with SingleTickerProviderStateMixin
                   children: [
                     Text(
                       'Aya Omrani',
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      AppLocalizations.of(context)!.language,
                       style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     Text(

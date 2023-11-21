@@ -1,6 +1,8 @@
 import 'package:ayaomrani/components/timeline_title.dart';
 import 'package:flutter/material.dart';
 
+import '../Map.dart';
+
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
 
@@ -70,21 +72,6 @@ class Profile extends StatelessWidget {
         child: Icon(Icons.map),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-    );
-  }
-}
-
-// Exemple d'écran de carte (remplacez cela par votre propre écran de carte)
-class MapScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Carte'),
-      ),
-      body: Center(
-        child: Text('Contenu de la carte ici'),
-      ),
     );
   }
 }
