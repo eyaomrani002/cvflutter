@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../detail_screen.dart';
+import '../portfilio/detail_screen.dart';
 
 class Portfolio extends StatefulWidget {
   const Portfolio({Key? key}) : super(key: key);
@@ -10,27 +10,51 @@ class Portfolio extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<Portfolio> {
+  bool isDarkMode = false;
+  void toggleDarkMode() {
+    setState(() {
+      isDarkMode = !isDarkMode;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: isDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
-        title: const Text('MON PORTFOLIO', style: TextStyle(color: Colors.black)),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 0,
+        backgroundColor: isDarkMode ? Colors.black : Colors.white,
+        shadowColor: isDarkMode ? Colors.white : Colors.black,
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 10.0),
+            child: IconButton(
+              color: isDarkMode ? Colors.white : Colors.black,
+              icon: isDarkMode
+                  ? Icon(Icons.sunny, size: 40)
+                  : Icon(Icons.dark_mode_outlined, size: 40),
+              onPressed: toggleDarkMode,
+            ),
+          )
+        ],
+        iconTheme: IconThemeData(
+          color: isDarkMode ? Colors.white : Colors.black,
+        ),
+        title: Text(
+          "A propos de moi ",
+          style: TextStyle(
+            color: Colors.red.shade300,
+            fontSize: 28,
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: GridView.count(
           crossAxisCount: 3,
           mainAxisSpacing: 10,
-          childAspectRatio: 2 / 3,
+          childAspectRatio: 1 / 1.5,
           children: [
             buildItemPortfilio('flutter', 'assets/img.png', 'Description for flutter'),
-            buildItemPortfilio('Awesome  2', 'assets/images/food2.jpg', 'Description for food 2'),
-            buildItemPortfilio('Awesome  3', 'assets/images/food3.jpg', 'Description for food 3'),
-            buildItemPortfilio('Awesome  4', 'assets/images/food4.jpg', 'Description for food 4'),
-            buildItemPortfilio('Awesome  1', 'assets/images/food1.jpg', 'Description for food 1'),
             buildItemPortfilio('Awesome  2', 'assets/images/food2.jpg', 'Description for food 2'),
             buildItemPortfilio('Awesome  3', 'assets/images/food3.jpg', 'Description for food 3'),
             buildItemPortfilio('Awesome  4', 'assets/images/food4.jpg', 'Description for food 4'),

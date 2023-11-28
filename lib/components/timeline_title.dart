@@ -10,7 +10,7 @@ class MyTimeLine extends StatelessWidget {
   final eventCard;
 
   const MyTimeLine({
-    Key? key, // Corrected key declaration
+    Key? key,
     required this.isFirst,
     required this.isLast,
     required this.isPast,
@@ -25,14 +25,16 @@ class MyTimeLine extends StatelessWidget {
         isFirst: isFirst,
         isLast: isLast,
         beforeLineStyle: LineStyle(
-            color: isPast ? Colors.pinkAccent : Colors.deepPurpleAccent.shade100),
+          color: isPast ? Color(0xFFCE6A6B) : Color(0xFFCE6A6B),
+        ),
         indicatorStyle: IndicatorStyle(
-            width: 40,
-            color: isPast ? Colors.pinkAccent : Colors.deepPurpleAccent.shade100,
-            iconStyle: IconStyle(
-              iconData: Icons.done,
-              color: isPast ? Colors.white : Colors.deepPurpleAccent.shade100,
-            )),
+          width: 40,
+          color: isPast ? Color(0xFFCE6A6B) : Color(0xFFCE6A6B),
+          iconStyle: IconStyle(
+            iconData: Icons.done,
+            color: isPast ? Colors.white : Color(0xFFCE6A6B),
+          ),
+        ),
         endChild: EventCard(
           isPast: isPast,
           isFirst: isFirst,

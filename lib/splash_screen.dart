@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'dart:async';
 
 import 'TabBar/TabBar.dart';
+import 'TabBar/home.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(const Duration(seconds: 4), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (BuildContext context) => MyTabBar(),
+          builder: (BuildContext context) => Home(),
         ),
       );
     });
@@ -77,7 +78,19 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 20), // Ajout d'un espace
+              const Text(
+                'Aya Omrani',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontStyle: FontStyle.normal, // or use fontStyle: FontStyle.normal
+                  fontFamily: 'YourCursiveFont', // replace with the name of your cursive font
+                ),
+              ),
+
+              const SizedBox(height: 20), // Ajout d'un espace
               Lottie.network(
                 "https://lottie.host/fff26b9f-61ef-40c1-8ae3-06d7485e6806/ZxmysYcQ94.json",
                 height: 200,

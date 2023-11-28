@@ -1,10 +1,11 @@
-import 'package:ayaomrani/TabBar/Profile.dart';
 import 'package:ayaomrani/TabBar/Etude.dart';
 import 'package:ayaomrani/TabBar/competences.dart';
 import 'package:ayaomrani/TabBar/experience.dart';
-import 'package:ayaomrani/TabBar/portfolio.dart';
+import 'package:ayaomrani/TabBar/Portfolio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'Profile.dart';
 class MyTabBar extends StatefulWidget {
   const MyTabBar({Key? key});
 

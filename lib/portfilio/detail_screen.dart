@@ -21,7 +21,8 @@ class DetailScreen extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
+            Container(
+              height: 700, // Ajustez cette hauteur selon vos besoins
               child: Image.asset(img, fit: BoxFit.cover),
             ),
             const SizedBox(width: 16),
