@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:ayaomrani/Map.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class About extends StatefulWidget {
   @override
@@ -52,20 +55,34 @@ class _AboutState extends State<About> {
   }
 
   void _launchFacebook() async {
-    final urlScheme =
-        'https://www.facebook.com/aya.omrani.372';
+    final urlScheme = 'https://www.facebook.com/aya.omrani.372';
 
     try {
       if (await canLaunch(urlScheme)) {
-        // Try launching with the Facebook app
         await launch(urlScheme, forceSafariVC: false);
       } else {
-        // Launch in a web browser if the app is not installed
         await launch('https://www.facebook.com/aya.omrani.372');
       }
     } catch (e) {
       print('Error launching Facebook: $e');
     }
+  }
+
+  _launchGitHub() async {
+    final url = 'https://github.com/eyaomrani002';
+
+    try {
+      await launch(url);
+    } catch (e) {
+      print('Error launching GitHub profile: $e');
+    }
+  }
+
+  void _navigateToMapScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => MapScreen()),
+    );
   }
 
   @override
@@ -91,7 +108,7 @@ class _AboutState extends State<About> {
           color: isDarkMode ? Colors.white : Colors.black,
         ),
         title: Text(
-          "A propos de moi ",
+          AppLocalizations.of(context)!.navbar,
           style: TextStyle(
             color: Colors.red.shade300,
             fontSize: 28,
@@ -127,13 +144,13 @@ class _AboutState extends State<About> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Aya Omrani ",
+                          AppLocalizations.of(context)!.nom,
                           style: TextStyle(
                               fontSize: 20, color: Colors.red[300]),
                         ),
                         SizedBox(height: 10),
                         Text(
-                          "Développeur Full-Stack ",
+                          AppLocalizations.of(context)!.metier,
                           style: TextStyle(
                               fontSize: 15, color: Colors.lightBlueAccent),
                         ),
@@ -145,7 +162,6 @@ class _AboutState extends State<About> {
                             color: isDarkMode ? Colors.white : Colors.grey,
                           ),
                         ),
-
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -161,17 +177,30 @@ class _AboutState extends State<About> {
                               child: ContactIcon(
                                 onPressed: _launchEmail,
                                 icon: Icons.email,
-                                color: Colors.blue.shade400,
+                                color: Colors.grey,
                               ),
                             ),
-                            SizedBox(width: 25),
+                            SizedBox(width: 10),
                             Expanded(
                               child: ContactIcon(
-                                onPressed: _launchFacebook,
-                                icon: Icons.link,
+                                onPressed: _navigateToMapScreen,
+                                icon: Icons.location_on,
+                                color: Colors.green,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Expanded(
+                              child: ContactIcon(
+                                onPressed: _launchLinkedIn,
+                                icon: FontAwesomeIcons.linkedin,
                                 color: Colors.blue,
                               ),
                             ),
+                            SizedBox(width: 10),
                             Expanded(
                               child: ContactIcon(
                                 onPressed: _launchFacebook,
@@ -179,6 +208,14 @@ class _AboutState extends State<About> {
                                 color: Colors.blue,
                               ),
                             ),
+                            Expanded(
+                              child: ContactIcon(
+                                onPressed: _launchGitHub,
+                                icon: FontAwesomeIcons.github,
+                                color: isDarkMode ? Colors.white : Colors.black,
+                              ),
+                            ),
+                            SizedBox(width: 10),
                           ],
                         ),
                       ],
@@ -190,72 +227,56 @@ class _AboutState extends State<About> {
             Padding(
               padding: EdgeInsets.all(20),
               child: Text(
-                'Je suis une étudiante en informatique talentueuse et compétente à  ISET de Sfax, âgée de 21 ans. J ai une passion pour la technologie et un fort désir d apprendre et de progresser. Mes compétences comprennent plusieurs langages de programmation et technologies. Je suis une apprenante rapide et une joueuse d équipe dévouée. Je suis enthousiaste à l idée de relever de nouveaux défis et de contribuer au monde de la technologie.' ,
+                AppLocalizations.of(context)!.language,
                 style: TextStyle(
                   fontSize: 16,
                   color: isDarkMode ? Colors.white : Colors.black,
                 ),
               ),
             ),
-           /* Padding(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Address:',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: isDarkMode ? Colors.white : Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.location_on,
-                        size: 30,
+
+            // Wrap the content you want to scroll in a SingleChildScrollView
+            SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Centres d\'Intérêt:',
+                      style: TextStyle(
+                        fontSize: 18,
                         color: isDarkMode ? Colors.white : Colors.black,
+                        fontWeight: FontWeight.w500,
                       ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Text(
-                          'Rte Mahdia 3.5km, Sfax, Tunisia',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: isDarkMode ? Colors.white : Colors.black,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  Container(
-                    height: 300,
-                    child: GoogleMap(
-                      mapType: MapType.normal,
-                      initialCameraPosition: CameraPosition(
-                        target: LatLng(34.7573643, 10.7724747),
-                        zoom: 15,
-                      ),
-                      onMapCreated: (GoogleMapController controller) {
-                        _controller.complete(controller);
-                      },
-                      markers: {
-                        Marker(
-                          markerId: MarkerId('marker_id'),
-                          position: LatLng(34.7573643, 10.7724747),
-                          infoWindow: InfoWindow(
-                              title: 'Marker Title', snippet: 'Marker Snippet'),
-                        ),
-                      },
                     ),
-                  ),
-                  SizedBox(height: 20),
-                ],
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        InterestIcon(
+                          icon: Icons.forest,
+                          label: 'Camping',
+                          color: isDarkMode ? Colors.red.shade200 : Colors.teal,
+                        ),
+                        InterestIcon(
+                          icon: FontAwesomeIcons.guitar,
+                          label: 'Music',
+                          color: isDarkMode ? Colors.red.shade200 : Colors.teal,
+                        ),
+                        InterestIcon(
+                          icon: Icons.sports_gymnastics,
+                          label: 'Sport',
+                          color: isDarkMode ? Colors.red.shade200 : Colors.teal,
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 70),
+                  ],
+                ),
               ),
-            ),*/
+            ),
           ],
         ),
       ),
@@ -290,6 +311,40 @@ class ContactIcon extends StatelessWidget {
           color: color,
         ),
       ),
+    );
+  }
+}
+
+class InterestIcon extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Color color;
+
+  const InterestIcon({
+    Key? key,
+    required this.icon,
+    required this.label,
+    required this.color,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Icon(
+          icon,
+          size: 40,
+          color: color,
+        ),
+        SizedBox(height: 5),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.grey,
+          ),
+        ),
+      ],
     );
   }
 }

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-
 import '../profile/ProgressBarCustom.dart';
 
-class Competence extends StatefulWidget {
-  const Competence({super. key});
+class Education extends StatefulWidget {
+  const Education({super. key});
 
   @override
-  State<Competence> createState() => _CompetenceState();
+  State<Education> createState() => _CompetenceState();
 }
 
 final TextStyle lightTextStyle = TextStyle(
@@ -19,7 +18,7 @@ final TextStyle darkTextStyle = TextStyle(
   fontSize: 12,
 );
 
-class _CompetenceState extends State<Competence> {
+class _CompetenceState extends State<Education> {
   bool isDarkMode = false;
 
   String description1 = "Licence en technologies de l'information";
@@ -35,63 +34,76 @@ class _CompetenceState extends State<Competence> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: isDarkMode ? Colors.black : Colors.white,
-      appBar: AppBar(
-        backgroundColor: isDarkMode ? Colors.black : Colors.white,
-        shadowColor: isDarkMode ? Colors.white : Colors.black,
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 10.0),
-            child: IconButton(
-              color: isDarkMode ? Colors.white : Colors.black,
-              icon: isDarkMode
-                  ? Icon(Icons.sunny, size: 40)
-                  : Icon(Icons.dark_mode_outlined, size: 40),
-              onPressed: toggleDarkMode,
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+              backgroundColor: isDarkMode ? Colors.black : Colors.white,
+              shadowColor: isDarkMode ? Colors.white : Colors.black,
+              actions: [
+                Padding(
+                  padding: EdgeInsets.only(right: 10.0),
+                  child: IconButton(
+                    color: isDarkMode ? Colors.white : Colors.black,
+                    icon: isDarkMode
+                        ? Icon(Icons.sunny, size: 40)
+                        : Icon(Icons.dark_mode_outlined, size: 40),
+                    onPressed: toggleDarkMode,
+                  ),
+                ),
+              ],
+              centerTitle: true,
+              iconTheme: IconThemeData(
+                color: isDarkMode ? Colors.white : Colors.black,
+              ),
+              title: Text(
+                "Éducation",
+                style: TextStyle(
+                  color: Colors.red.shade200,
+                  fontSize: 18,
+                ),
+              ),
+              floating: true,
+              pinned: true,
+              snap: true,
             ),
+          ];
+        },
+        body: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 10),
+              _SectionTitleWidget(title: "Éducation :"),
+              _EducationSection(
+                title: "Institut Supérieur des Études\nTechnologiques de SFAX",
+                description: description1,
+                icon: Icons.school,
+                isDarkMode: isDarkMode,
+              ),
+              _EducationSection(
+                title: "Lycée Jammel\n Jammel, Monastir",
+                description: description2,
+                icon: Icons.school,
+                isDarkMode: isDarkMode,
+              ),
+              _EducationSection(
+                title: "Collège Hay lfatah\n Jammel, Monastir",
+                description: "",
+                icon: Icons.school,
+                isDarkMode: isDarkMode,
+              ),
+              _EducationSection(
+                title: "École primaire Ebn Jzar\n Jammel, Monastir",
+                description: "",
+                icon: Icons.school,
+                isDarkMode: isDarkMode,
+              ),
+              _SectionTitleWidget(title: "Langues :"),
+              _LanguagesSection(isDarkMode: isDarkMode),
+            ],
           ),
-        ],
-        centerTitle: true,
-        iconTheme: IconThemeData(
-          color: isDarkMode ? Colors.white : Colors.black,
-        ),
-        title: Text(
-          "Éducation",
-          style: TextStyle(
-            color: Colors.red.shade200,
-            fontSize: 18,
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(height: 10),
-            _SectionTitleWidget(title: "Éducation :"),
-            _EducationSection(
-              title: "Institut Supérieur des Études\nTechnologiques de SFAX",
-              description: description1,
-              isDarkMode: isDarkMode,
-            ),
-            _EducationSection(
-              title: "Lycée Jammel\n Jammel, Monastir",
-              description: description2,
-              isDarkMode: isDarkMode,
-            ),
-            _EducationSection(
-              title: "Collège Hay lfatah\n Jammel, Monastir",
-              description: "",
-              isDarkMode: isDarkMode,
-            ),
-            _EducationSection(
-              title: "École Ebn Jzar\n Jammel, Monastir",
-              description: "",
-              isDarkMode: isDarkMode,
-            ),
-            _SectionTitleWidget(title: "Langues :"),
-            _LanguagesSection(isDarkMode: isDarkMode),
-          ],
         ),
       ),
     );
@@ -101,12 +113,14 @@ class _CompetenceState extends State<Competence> {
 class _EducationSection extends StatelessWidget {
   final String title;
   final String description;
+  final IconData icon;
   final bool isDarkMode;
 
   const _EducationSection({
     Key? key,
     required this.title,
     required this.description,
+    required this.icon,
     required this.isDarkMode,
   }) : super(key: key);
 
@@ -119,14 +133,10 @@ class _EducationSection extends StatelessWidget {
         children: <Widget>[
           Row(
             children: <Widget>[
-              Container(
-                height: 10,
-                width: 10,
-                margin: EdgeInsets.only(right: 10),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: isDarkMode ? Colors.teal : Color(0xFFCE8F8A),
-                ),
+              Icon(
+                icon,
+                size: 30,
+                color: isDarkMode ? Colors.teal : Color(0xFFCE8F8A),
               ),
               Flexible(
                 child: Text(

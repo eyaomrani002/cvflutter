@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../portfilio/detail_screen.dart';
-
 class Portfolio extends StatefulWidget {
   const Portfolio({Key? key}) : super(key: key);
 
@@ -11,6 +9,7 @@ class Portfolio extends StatefulWidget {
 
 class _HomeScreenState extends State<Portfolio> {
   bool isDarkMode = false;
+
   void toggleDarkMode() {
     setState(() {
       isDarkMode = !isDarkMode;
@@ -40,7 +39,7 @@ class _HomeScreenState extends State<Portfolio> {
           color: isDarkMode ? Colors.white : Colors.black,
         ),
         title: Text(
-          "A propos de moi ",
+          "Mon Portfolio ",
           style: TextStyle(
             color: Colors.red.shade300,
             fontSize: 28,
@@ -50,19 +49,19 @@ class _HomeScreenState extends State<Portfolio> {
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: GridView.count(
-          crossAxisCount: 3,
+          crossAxisCount: 2,
           mainAxisSpacing: 10,
           childAspectRatio: 1 / 1.5,
           children: [
-            buildItemPortfilio('flutter', 'assets/img.png', 'Description for flutter'),
-            buildItemPortfilio('Awesome  2', 'assets/images/food2.jpg', 'Description for food 2'),
-            buildItemPortfilio('Awesome  3', 'assets/images/food3.jpg', 'Description for food 3'),
-            buildItemPortfilio('Awesome  4', 'assets/images/food4.jpg', 'Description for food 4'),
-            buildItemPortfilio('Awesome  1', 'assets/images/food1.jpg', 'Description for food 1'),
-            buildItemPortfilio('Awesome  2', 'assets/images/food2.jpg', 'Description for food 2'),
-            buildItemPortfilio('Awesome  3', 'assets/images/food3.jpg', 'Description for food 3'),
-            buildItemPortfilio('Awesome  4', 'assets/images/food4.jpg', 'Description for food 4'),
+            buildItemPortfilio('Degital Banking', 'assets/degital_banking.png', 'Application qui permet au client de gerer leur compte bancaire ecrit en angular et spring boot '),
+            buildItemPortfilio('Gestion de Stock ', 'assets/gestion_de_stock.png', 'Site web qui permet au client de gerer le produit ajouter modifier supprimer et gerer la quantite ecrit en "Angular" et "Node" '),
+            buildItemPortfilio('Online shopping', 'assets/online_shopping.png', ' Online Shopping qui permet le client de acheter des produit en ligne "React Js "'),
+            buildItemPortfilio('Planner Agency', 'assets/planner_agency.png', 'Une application ecrit en "Angular" et "spring boot"  qui permet la planification, la coordination et l exécution d événements spéciaux '),
+            buildItemPortfilio('Wedding planner ', 'assets/wedding_planner.png', ' site de planification de mariage ecrit en html css et js '),
+            buildItemPortfilio('K-POP', 'assets/Kpop.png', 'c est un site permet d" engager les fans et fournir des informations pertinentes Actualités Calendrier des Événements Boutique en Ligne Classements et Awards '),
+            const SizedBox(height: 5),
           ],
+
         ),
       ),
     );
@@ -71,19 +70,42 @@ class _HomeScreenState extends State<Portfolio> {
   Widget buildItemPortfilio(String title, String img, String description) {
     return GestureDetector(
       onTap: () {
-        // Navigate to the detail screen when an image is tapped
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DetailScreen(title, img, description),
-          ),
+        // Afficher une alerte avec le titre, l'image et la description
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(title),
+              content: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.asset(img, fit: BoxFit.cover),
+                  const SizedBox(height: 10),
+                  Text(description),
+                ],
+              ),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('Fermer'),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.red.shade200),
+                    // Vous pouvez ajuster d'autres propriétés ici
+                  ),
+                ),
+              ],
+            );
+          },
         );
       },
       child: Container(
         margin: const EdgeInsets.all(5),
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: Color(0xFFE9C8CE),
+          color: isDarkMode ? Color(0xFFA7E0E0) :Color(0xFFE9C8CE),
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(

@@ -1,6 +1,23 @@
 {
-  "language": "Français",
-  "@language": {
-    "description": "Bonjour le monde!"
+
+    "language": "Je suis une étudiante en informatique talentueuse et compétente à ISET de Sfax, âgée de 21 ans. J'ai une passion pour la technologie et un fort désir d'apprendre et de progresser. Mes compétences comprennent plusieurs langages de programmation et technologies. Je suis une apprenante rapide et une joueuse d'équipe dévouée. Je suis enthousiaste à l'idée de relever de nouveaux défis et de contribuer au monde de la technologie.",
+    "@language": {
+      "description": "Je suis une étudiante en informatique talentueuse et compétente à ISET de Sfax, âgée de 21 ans. J'ai une passion pour la technologie et un fort désir d'apprendre et de progresser. Mes compétences comprennent plusieurs langages de programmation et technologies. Je suis une apprenante rapide et une joueuse d'équipe dévouée. Je suis enthousiaste à l'idée de relever de nouveaux défis et de contribuer au monde de la technologie."
+
+  },
+  "navbar": "A propre de moi ",
+  "@navbar": {
+    "description": "A propre de moi"
+
+  },
+  "nom": "Aya Omrani ",
+  "@nom": {
+    "description": "Aya Omrani"
+
+  },
+  "metier": "Développeur Full-Stack",
+  "@metier": {
+    "description": "Développeur Full-Stack"
+
   }
-  }
+}

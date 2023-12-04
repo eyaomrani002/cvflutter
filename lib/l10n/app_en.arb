@@ -1,6 +1,23 @@
 {
-  "language": "English",
-  "@language": {
-    "description": "Hello World!"
+
+    "language": "I am a talented and competent computer science student at ISET in Sfax, 21 years old. I have a passion for technology and a strong desire to learn and progress. My skills include several programming languages and technologies. I am a quick learner and a dedicated team player. I am excited about facing new challenges and contributing to the world of technology.",
+    "@language": {
+      "description": "I am a talented and competent computer science student at ISET in Sfax, 21 years old. I have a passion for technology and a strong desire to learn and progress. My skills include several programming languages and technologies. I am a quick learner and a dedicated team player. I am excited about facing new challenges and contributing to the world of technology."
+
+  },
+  "navbar": "About Me.",
+  "@navbar": {
+    "description": "About Me."
+
+  },
+  "nom": "Aya Omrani ",
+  "@nom": {
+    "description": "Aya Omrani"
+
+  },
+  "metier": "Full-Stack Developer",
+  "@metier": {
+    "description": "Full-Stack Developer"
+
   }
   }

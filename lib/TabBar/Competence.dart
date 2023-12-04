@@ -3,11 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class Experience extends StatefulWidget {
-  const Experience({Key? key}) : super(key: key);
+class Competence extends StatefulWidget {
+  const Competence({Key? key}) : super(key: key);
 
   @override
-  State<Experience> createState() => _ExperienceState();
+  State<Competence> createState() => _ExperienceState();
 }
 
 class ExperienceItem {
@@ -17,7 +17,7 @@ class ExperienceItem {
   ExperienceItem({required this.title, required this.description});
 }
 
-class _ExperienceState extends State<Experience> {
+class _ExperienceState extends State<Competence> {
   bool isDarkMode = false;
 
   void toggleDarkMode() {
@@ -71,17 +71,18 @@ class _ExperienceState extends State<Experience> {
   bool showBottomAppBar = true;
 
   List<ExperienceItem> experienceList = [
+
     ExperienceItem(
-      title: "Software Developer",
-      description: "Worked on various projects using Flutter and Dart.",
+      title: "Développeur Frontend",
+      description: "Conception d'interfaces utilisateur en utilisant React ,JavaScript,Angular ,HTML,CSS et Next Js",
     ),
     ExperienceItem(
-      title: "Frontend Developer",
-      description: "Developed user interfaces using React and JavaScript.",
+      title: "Développeur Backend",
+      description: "onsiste à concevoir, développer et maintenir la logique serveur de l'application en utilisant des technologies telles que Java, Python, Node.js,",
     ),
     ExperienceItem(
-      title: "Frontend Developer22",
-      description: "Developed user interfaces using React and JavaScript.",
+      title: "Développeur Full Stack",
+      description: "mise en œuvre de la logique serveur et des fonctionnalités côté serveur.",
     ),
     // Add more experiences as needed
   ];
@@ -109,7 +110,7 @@ class _ExperienceState extends State<Experience> {
           color: isDarkMode ? Colors.white : Colors.black,
         ),
         title: Text(
-          "A propos de moi ",
+          "Mes Competence ",
           style: TextStyle(
             color: Colors.red.shade300,
             fontSize: 28,
@@ -164,7 +165,7 @@ class _ExperienceState extends State<Experience> {
                           ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(24.0),
-                            color: Colors.amberAccent,
+                            color: isDarkMode ? Colors.teal : Color(0xFFCE8F8A),
                           ),
                           child: Center(
                             child: Column(
@@ -203,8 +204,9 @@ class _ExperienceState extends State<Experience> {
                         Icons.circle,
                         size: 12.0,
                         color: pageNo == index
-                            ? Colors.indigoAccent
+                            ? (isDarkMode ?  Color(0xFFCE8F8A):Colors.teal )
                             : Colors.grey.shade300,
+
                       ),
                     ),
                   ),
@@ -224,7 +226,6 @@ class _ExperienceState extends State<Experience> {
     );
   }
 }
-
 class GridB extends StatefulWidget {
   const GridB({Key? key}) : super(key: key);
 
@@ -232,7 +233,59 @@ class GridB extends StatefulWidget {
   State<GridB> createState() => _GridBState();
 }
 
+class Project {
+
+  final String imageUrl;
+
+  Project({
+
+    required this.imageUrl,
+  });
+}
+
 class _GridBState extends State<GridB> {
+  final List<Project> projects = [
+    Project(
+
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5iJa0nfWBSghUxupD8Z8a7pI9vB1VKVGWodsuEsovBE593sqmwwKyn5L0I6nuvoBydgI&usqp=CAU",
+    ),
+    Project(
+
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdV2bglU-TCvp7x2uaRp4fTqNPTUB3YiJ7Ng&usqp=CAU",
+    ),
+    Project(
+
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7axW36M5EY2BWVrmVnJINJQ8WY0sdZGFchA&usqp=CAU",
+    ),
+    Project(
+
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqj-DuchpfOknjE4TYoWIeDHzNLD42GK20E6xKeB9L22VdpD0jVNqad_VgB0y_1TEUJtg&usqp=CAU",
+    ),
+    Project(
+
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpzCCDmldlu6vAT394sfQ1i3St-l6u2zqziA&usqp=CAU",
+    ),
+    Project(
+
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROyraAPA2vQr_ahZ9pvOW-rsjjIDOYrx5Qgw&usqp=CAU",
+    ),
+    Project(
+
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuP5yUKrd7wTIbhurAe_dXijKgYyRti3TI1Q&usqp=CAU",
+    ),
+    Project(
+
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReTFnAQfryV92SZpjU66ai_Ti1gkiL7U6-5g&usqp=CAU",
+    ),
+    Project(
+
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-Jp6R2qbT9YT8bt7MhQMO16Xm-73STiuDjw&usqp=CAU",
+    ),
+    Project(
+
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjvcqOWskUQPvq5nw1bYJa_FpN7AJi7Uhxgw&usqp=CAU",
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -241,16 +294,13 @@ class _GridBState extends State<GridB> {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 12.0,
-        mainAxisSpacing: 12.0,
+        mainAxisSpacing: 2.0, // Réduisez cet espacement vertical selon vos besoins
         mainAxisExtent: 310,
       ),
-      itemCount: 6, // Update this count as needed
+      itemCount: projects.length,
       itemBuilder: (_, index) {
+        Project project = projects[index];
         return Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.0),
-            color: Colors.amberAccent.shade100,
-          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -260,38 +310,10 @@ class _GridBState extends State<GridB> {
                   topRight: Radius.circular(16.0),
                 ),
                 child: Image.network(
-                  "https://via.placeholder.com/150",
+                  project.imageUrl,
                   height: 170,
                   width: double.infinity,
                   fit: BoxFit.cover,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Project ${index + 1}",
-                      style: Theme.of(context).textTheme.subtitle1!.merge(
-                        const TextStyle(
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 8.0,
-                    ),
-                    Text(
-                      "Description of Project ${index + 1}",
-                      style: Theme.of(context).textTheme.subtitle2!.merge(
-                        TextStyle(
-                          fontWeight: FontWeight.w700,
-                          color: Colors.grey.shade500,
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
               ),
             ],
@@ -301,4 +323,3 @@ class _GridBState extends State<GridB> {
     );
   }
 }
-

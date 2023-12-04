@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:async';
 
-import 'TabBar/TabBar.dart';
 import 'TabBar/home.dart';
 
 class SplashScreen extends StatefulWidget {
