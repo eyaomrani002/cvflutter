@@ -19,5 +19,12 @@
   "@metier": {
     "description": "Développeur Full-Stack"
 
-  }
+  },
+  "contact": "Contact",
+  "interet": "Centres d'Intérêt",
+  "camping": "Camping",
+  "music": "Musique",
+  "sport": "Sport"
+
+
 }

@@ -2,12 +2,14 @@ import 'package:ayaomrani/portfilio/text_style.dart';
 import 'package:flutter/material.dart';
 
 class Experience extends StatefulWidget {
+  final bool isDarkMode;
+  const Experience({Key? key, required this.isDarkMode}) : super(key: key);
   @override
   _EtudeState createState() => _EtudeState();
 }
 
 class _EtudeState extends State<Experience> {
-  bool isDarkMode = false;
+
 
   String description1 = "Institut supérieur des études technologiques de sfax  | Juillet – aout 2023""\n""Institut Superieure des etudestechnologique de sfax""\n""•	Développement et création d'une application web Degital Banking ""\n""•	Mise en place d'un système CRUD pour les services bancaires";
   String description2 = "Tunisie Telecom  | 17 janvier 2022 – 12 février 2022 ""\n""•	Gestion des besoins des clients.""\n""•	Résolution rapide des problèmes des clients.""\n""•	Collaboration avec l'équipe technique sur des aspects techniques sur le terrain.";
@@ -15,45 +17,15 @@ class _EtudeState extends State<Experience> {
   String description5 = "Membre croissant rouge de Monastir depuis 2017, guide de farfadets depuis 2019.";
   String description6 = "Membre actif du Club Leo depuis 2019, leader d'initiatives communautaires et humanitaires.";
 
-  void toggleDarkMode() {
-    setState(() {
-      isDarkMode = !isDarkMode;
-    });
-  }
+
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0), // Ajout du padding global
       child: Scaffold(
-        backgroundColor: isDarkMode ? Colors.black : Colors.white,
-        appBar: AppBar(
-          backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          shadowColor: isDarkMode ? Colors.white : Colors.black,
-          actions: [
-            Padding(
-              padding: EdgeInsets.only(right: 10.0),
-              child: IconButton(
-                color: isDarkMode ? Colors.white : Colors.black,
-                icon: isDarkMode
-                    ? Icon(Icons.sunny, size: 40)
-                    : Icon(Icons.dark_mode_outlined, size: 40),
-                onPressed: toggleDarkMode,
-              ),
-            ),
-          ],
-          centerTitle: true,
-          iconTheme: IconThemeData(
-            color: isDarkMode ? Colors.white : Colors.black,
-          ),
-          title: Text(
-            "Expériences ",
-            style: headerTextStyle.copyWith(
-              color: Colors.red.shade200,
-              fontSize: 18,
-            ),
-          ),
-        ),
+        backgroundColor: widget.isDarkMode ? Colors.black : Colors.white,
+
         body: SingleChildScrollView(
           padding: EdgeInsets.only(left: 20, right: 20),
           child: Column(
@@ -143,12 +115,12 @@ class _EtudeState extends State<Experience> {
               padding: const EdgeInsets.all(8.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: isDarkMode ? Colors.black : Colors.white,
+                color: widget.isDarkMode ? Colors.black : Colors.white,
               ),
               child: Text(
                 description,
                 style: TextStyle(
-                  color: isDarkMode ? Colors.white : Colors.black,
+                  color: widget.isDarkMode  ? Colors.white : Colors.black,
                   fontSize: 15,
                 ),
               ),

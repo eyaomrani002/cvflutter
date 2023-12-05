@@ -17,6 +17,10 @@
   "metier": "مطور",
   "@metier": {
     "description": "مطور"
-
-  }
+  },
+  "contact": "اتصل",
+  "interet": "مراكز الاهتمام",
+  "camping": "التخييم",
+  "music": "موسيقى",
+  "sport": "رياضة"
   }

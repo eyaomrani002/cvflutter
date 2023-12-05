@@ -19,5 +19,10 @@
   "@metier": {
     "description": "Full-Stack Developer"
 
-  }
-  }
+  },
+  "contact": "Contact",
+  "interet": "Interests",
+  "camping": "Camping",
+  "music": "Music",
+  "sport": "Sport"
+}

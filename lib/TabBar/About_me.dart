@@ -8,19 +8,17 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class About extends StatefulWidget {
+  final bool isDarkMode;
+  const About({Key? key, required this.isDarkMode}) : super(key: key);
+
   @override
   _AboutState createState() => _AboutState();
 }
 
 class _AboutState extends State<About> {
-  bool isDarkMode = false;
   Completer<GoogleMapController> _controller = Completer();
 
-  void toggleDarkMode() {
-    setState(() {
-      isDarkMode = !isDarkMode;
-    });
-  }
+
 
   void _launchPhone() async {
     const url = 'tel:+21646326522';
@@ -88,33 +86,8 @@ class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: isDarkMode ? Colors.black : Colors.white,
-      appBar: AppBar(
-        backgroundColor: isDarkMode ? Colors.black : Colors.white,
-        shadowColor: isDarkMode ? Colors.white : Colors.black,
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 10.0),
-            child: IconButton(
-              color: isDarkMode ? Colors.white : Colors.black,
-              icon: isDarkMode
-                  ? Icon(Icons.sunny, size: 40)
-                  : Icon(Icons.dark_mode_outlined, size: 40),
-              onPressed: toggleDarkMode,
-            ),
-          )
-        ],
-        iconTheme: IconThemeData(
-          color: isDarkMode ? Colors.white : Colors.black,
-        ),
-        title: Text(
-          AppLocalizations.of(context)!.navbar,
-          style: TextStyle(
-            color: Colors.red.shade300,
-            fontSize: 28,
-          ),
-        ),
-      ),
+      backgroundColor: widget.isDarkMode ? Colors.black : Colors.white,
+
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -127,7 +100,7 @@ class _AboutState extends State<About> {
                     child: Container(
                       decoration: BoxDecoration(
                         border: Border.all(
-                            color: isDarkMode ? Colors.white : Colors.black,
+                            color: widget.isDarkMode ? Colors.white : Colors.black,
                             width: 2),
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -156,10 +129,10 @@ class _AboutState extends State<About> {
                         ),
                         SizedBox(height: 15),
                         Text(
-                          'Contact',
+                          AppLocalizations.of(context)!.contact,
                           style: TextStyle(
                             fontSize: 16,
-                            color: isDarkMode ? Colors.white : Colors.grey,
+                            color: widget.isDarkMode ? Colors.white : Colors.grey,
                           ),
                         ),
                         Row(
@@ -212,7 +185,7 @@ class _AboutState extends State<About> {
                               child: ContactIcon(
                                 onPressed: _launchGitHub,
                                 icon: FontAwesomeIcons.github,
-                                color: isDarkMode ? Colors.white : Colors.black,
+                                color: widget.isDarkMode ? Colors.white : Colors.black,
                               ),
                             ),
                             SizedBox(width: 10),
@@ -230,7 +203,7 @@ class _AboutState extends State<About> {
                 AppLocalizations.of(context)!.language,
                 style: TextStyle(
                   fontSize: 16,
-                  color: isDarkMode ? Colors.white : Colors.black,
+                  color: widget.isDarkMode ? Colors.white : Colors.black,
                 ),
               ),
             ),
@@ -244,10 +217,10 @@ class _AboutState extends State<About> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Centres d\'Intérêt:',
+                      AppLocalizations.of(context)!.interet,
                       style: TextStyle(
                         fontSize: 18,
-                        color: isDarkMode ? Colors.white : Colors.black,
+                        color: widget.isDarkMode ? Colors.white : Colors.black,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -257,18 +230,18 @@ class _AboutState extends State<About> {
                       children: [
                         InterestIcon(
                           icon: Icons.forest,
-                          label: 'Camping',
-                          color: isDarkMode ? Colors.red.shade200 : Colors.teal,
+                          label: AppLocalizations.of(context)!.camping,
+                          color: widget.isDarkMode ? Colors.red.shade200 : Colors.teal,
                         ),
                         InterestIcon(
                           icon: FontAwesomeIcons.guitar,
-                          label: 'Music',
-                          color: isDarkMode ? Colors.red.shade200 : Colors.teal,
+                          label: AppLocalizations.of(context)!.music,
+                          color: widget.isDarkMode ? Colors.red.shade200 : Colors.teal,
                         ),
                         InterestIcon(
                           icon: Icons.sports_gymnastics,
-                          label: 'Sport',
-                          color: isDarkMode ? Colors.red.shade200 : Colors.teal,
+                          label: AppLocalizations.of(context)!.sport,
+                          color: widget.isDarkMode ? Colors.red.shade200 : Colors.teal,
                         ),
                       ],
                     ),

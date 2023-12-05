@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../profile/ProgressBarCustom.dart';
 
 class Education extends StatefulWidget {
-  const Education({super. key});
-
+  final bool isDarkMode;
+  const Education({Key? key, required this.isDarkMode}) : super(key: key);
   @override
   State<Education> createState() => _CompetenceState();
 }
@@ -19,56 +19,17 @@ final TextStyle darkTextStyle = TextStyle(
 );
 
 class _CompetenceState extends State<Education> {
-  bool isDarkMode = false;
+
 
   String description1 = "Licence en technologies de l'information";
   String description2 = "Baccalauréat en 2021";
 
-  void toggleDarkMode() {
-    setState(() {
-      isDarkMode = !isDarkMode;
-    });
-  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: isDarkMode ? Colors.black : Colors.white,
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return [
-            SliverAppBar(
-              backgroundColor: isDarkMode ? Colors.black : Colors.white,
-              shadowColor: isDarkMode ? Colors.white : Colors.black,
-              actions: [
-                Padding(
-                  padding: EdgeInsets.only(right: 10.0),
-                  child: IconButton(
-                    color: isDarkMode ? Colors.white : Colors.black,
-                    icon: isDarkMode
-                        ? Icon(Icons.sunny, size: 40)
-                        : Icon(Icons.dark_mode_outlined, size: 40),
-                    onPressed: toggleDarkMode,
-                  ),
-                ),
-              ],
-              centerTitle: true,
-              iconTheme: IconThemeData(
-                color: isDarkMode ? Colors.white : Colors.black,
-              ),
-              title: Text(
-                "Éducation",
-                style: TextStyle(
-                  color: Colors.red.shade200,
-                  fontSize: 18,
-                ),
-              ),
-              floating: true,
-              pinned: true,
-              snap: true,
-            ),
-          ];
-        },
+      backgroundColor: widget.isDarkMode ? Colors.black : Colors.white,
         body: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Column(
@@ -80,33 +41,32 @@ class _CompetenceState extends State<Education> {
                 title: "Institut Supérieur des Études\nTechnologiques de SFAX",
                 description: description1,
                 icon: Icons.school,
-                isDarkMode: isDarkMode,
+                isDarkMode: widget.isDarkMode,
               ),
               _EducationSection(
                 title: "Lycée Jammel\n Jammel, Monastir",
                 description: description2,
                 icon: Icons.school,
-                isDarkMode: isDarkMode,
+                isDarkMode: widget.isDarkMode,
               ),
               _EducationSection(
                 title: "Collège Hay lfatah\n Jammel, Monastir",
                 description: "",
                 icon: Icons.school,
-                isDarkMode: isDarkMode,
+                isDarkMode: widget.isDarkMode,
               ),
               _EducationSection(
                 title: "École primaire Ebn Jzar\n Jammel, Monastir",
                 description: "",
                 icon: Icons.school,
-                isDarkMode: isDarkMode,
+                isDarkMode: widget.isDarkMode,
               ),
               _SectionTitleWidget(title: "Langues :"),
-              _LanguagesSection(isDarkMode: isDarkMode),
+              _LanguagesSection(isDarkMode: widget.isDarkMode),
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
 

@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class Competence extends StatefulWidget {
-  const Competence({Key? key}) : super(key: key);
+  final bool isDarkMode;
+  const Competence({Key? key, required this.isDarkMode}) : super(key: key);
 
   @override
   State<Competence> createState() => _ExperienceState();
@@ -18,13 +19,7 @@ class ExperienceItem {
 }
 
 class _ExperienceState extends State<Competence> {
-  bool isDarkMode = false;
 
-  void toggleDarkMode() {
-    setState(() {
-      isDarkMode = !isDarkMode;
-    });
-  }
   late final PageController pageController;
   ScrollController _scrollController = ScrollController();
   int pageNo = 0;
@@ -90,33 +85,8 @@ class _ExperienceState extends State<Competence> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: isDarkMode ? Colors.black : Colors.white,
-      appBar: AppBar(
-        backgroundColor: isDarkMode ? Colors.black : Colors.white,
-        shadowColor: isDarkMode ? Colors.white : Colors.black,
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 10.0),
-            child: IconButton(
-              color: isDarkMode ? Colors.white : Colors.black,
-              icon: isDarkMode
-                  ? Icon(Icons.sunny, size: 40)
-                  : Icon(Icons.dark_mode_outlined, size: 40),
-              onPressed: toggleDarkMode,
-            ),
-          )
-        ],
-        iconTheme: IconThemeData(
-          color: isDarkMode ? Colors.white : Colors.black,
-        ),
-        title: Text(
-          "Mes Competence ",
-          style: TextStyle(
-            color: Colors.red.shade300,
-            fontSize: 28,
-          ),
-        ),
-      ),
+      backgroundColor: widget.isDarkMode ? Colors.black : Colors.white,
+
       body: SafeArea(
 
         child: SingleChildScrollView(
@@ -165,7 +135,7 @@ class _ExperienceState extends State<Competence> {
                           ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(24.0),
-                            color: isDarkMode ? Colors.teal : Color(0xFFCE8F8A),
+                            color: widget.isDarkMode ? Colors.teal : Color(0xFFCE8F8A),
                           ),
                           child: Center(
                             child: Column(
@@ -204,7 +174,7 @@ class _ExperienceState extends State<Competence> {
                         Icons.circle,
                         size: 12.0,
                         color: pageNo == index
-                            ? (isDarkMode ?  Color(0xFFCE8F8A):Colors.teal )
+                            ? (widget.isDarkMode ?  Color(0xFFCE8F8A):Colors.teal )
                             : Colors.grey.shade300,
 
                       ),
